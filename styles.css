@@ -1,0 +1,277 @@
+@font-face {
+    font-family: 'GhostClan';
+    src: url('fonts/ghostclan/ghostclan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #B7C4BE;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'GhostClan', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    color: #475841;
+}
+
+header {
+    background-color: transparent;
+    padding: 10px;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+    width: 100% - 100px;
+}
+
+header h1 {
+    font-size: xx-large;
+    text-align: center;
+}
+
+header .head-content {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.btn {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'GhostClan', sans-serif;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #434C40;
+    width: fit-content;
+    color: #434C40;
+    box-shadow: 0 0 0 .1em inset var(--c);
+    --c: #434C40;
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+      var(--_g) calc(var(--_p,0%) - 100%) 0%,
+      var(--_g) calc(200% - var(--_p,0%)) 0%,
+      var(--_g) calc(var(--_p,0%) - 100%) 100%,
+      var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+}
+
+.btn:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+    color: #B7C4BE;
+}
+
+.btn:active {
+    box-shadow: 0 0 9px inset #0009;
+    background-color: var(--c);
+    color: #fff;
+}
+
+header .head-content .game-counter{
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+}
+
+.popup {
+    display: none;  /* Keep it hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+}
+
+.popup.active {
+    display: flex;  /* Show the popup by changing the display to flex */
+}
+
+.popup-content {
+    background-color: #89A092; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;  /* This ensures the content stays in the center */
+}
+
+header .head-content .popup-content fieldset {
+    margin: 50px;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgba(255, 255, 255, 0.1);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	display: inline-block;
+	border: none;
+}
+
+header .head-content .popup-content fieldset legend {
+    font-size: 28px;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(2px);
+	border-radius: 20px;
+	padding: 10px 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .head-content .popup-content fieldset input[type="radio"] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	margin-right: 10px;
+	background-color: transparent;
+	position: relative;
+	top: 6px;
+}
+
+header .head-content .popup-content fieldset input[type="radio"]:checked::before {
+	content: "";
+	display: block;
+	width: 12px;
+	height: 12px;
+	background-color: #ca8489;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: appear 0.8s;
+}
+
+header .head-content .popup-content fieldset label {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+header .head-content .popup-content fieldset div {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+@keyframes appear {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+		background-color: #fff;
+	}
+	45% {
+		transform: translate(-50%, -50%) scale(1.6);
+		background-color: #64aedf;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(1.7);
+		background-color: #ad97b3;
+	}
+	55% {
+		transform: translate(-50%, -50%) scale(1.6);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		background-color: #ca8489;
+	}
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main #game-board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    background-color: #434C40;
+    font-size: 20px;
+}
+
+main #game-board .grid-cell {
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: #89A092;
+    color: #434C40;
+    text-align: center;
+}
+
+main #game-board .grid-cell:active {
+    background-color: #5d8d4c;
+    color: #89A092;
+}
+
+main .popup {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+main .games-won-counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+main .games-won-counter p {
+    margin: 10px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #56ac39;
+    position: fixed;
+    bottom: 0px;
+}
+
+footer p {
+    margin: 10px;
+    color: #adec98;
+    font-weight: normal;
+}
+
+@media (max-width: 400px){
+    
+
+    main #game-board .grid-cell {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+    }
+
+    footer {
+        position: relative;
+    }
+}

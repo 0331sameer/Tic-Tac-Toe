@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tic Tac Toe</h1>
+        <div class="head-content">
+            
+            <div class="div-btn-area">
+                <button class="btn" id="newgame-btn">New Game</button>
+            </div>
+
+            <div id="opponent-popup" class="popup">
+                <div class="popup-content">
+                    <fieldset>
+                        <legend>Choose Opponent: </legend>
+                    
+                        <div>
+                            <input type="radio" id="hvh" name="opponent" value="hvh">
+                            <label for="hvh">🧑 vs 🧑</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="hvc" name="opponent" value="hvc">
+                            <label for="hvc">🧑 vs 🖥️</label>
+                        </div>
+    
+                    </fieldset>
+                    <button class="btn" id="continue-difficulty">Continue</button>
+                </div>
+            </div>
+
+            <div id="difficulty-popup" class="popup">
+                <div class="popup-content">
+                    <fieldset>
+                        <legend>Choose Difficulty: </legend>
+                    
+                        <div>
+                            <input type="radio" id="easy" name="difficulty" value="easy">
+                            <label for="easy"> easy</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="medium" name="difficulty" value="medium">
+                            <label for="medium">medium</label>
+                        </div>
+    
+                        <div>
+                            <input type="radio" id="hard" name="difficulty" value="hard">
+                            <label for="hard">hard</label>
+                        </div>
+    
+                    </fieldset>
+                    <button class="btn" id="continue-game">Continue</button>
+                </div>
+            </div>
+            <div id="turn-popup" class="popup">
+                <div class="popup-content">
+                    <h2>Turn</h2>
+                    <p>Player : <span id="player-turn">1</span></p>
+                </div>    
+            </div>
+            <div id="outcome-popup" class="popup">
+                <div class="popup-content">
+                    <h2>Game Over</h2>
+                    <span id="outcome">Palyer 1 won</span>
+                    <div>
+                        <button class="btn" id="play-again-btn">Play Again</button>
+                        <button class="btn" id="new-game-btn">New Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="game-counter">
+                Games Played: <span id="games-played-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="game-board"></div>
+
+        <div class="games-won-counter">
+            <p>Player 1 Wins: <span id="player1-wins-counter">0</span></p>
+            <p>Player 2 Wins: <span id="player2-wins-counter">0</span></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; Tic Tac Toe</p>
+        <div>
+            <a href="https://www.linkedin.com/in/muhammad-sameer-8288b5249/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/0331sameer" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
