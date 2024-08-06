@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Check win condition immediately after AI moves
                 checkwinner(checkWinCondition());
             }, 500);
+            playerturn = 0;
         }
     }
 
@@ -128,24 +129,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const cell = event.target;
         const row = cell.getAttribute('data-row');
         const col = cell.getAttribute('data-col');
-    
+        console.log(playerturn);
         if (gameboardarray[row][col] === '') {    
             if (playerturn === 0) {
                 addTile('X', row, col);
                 turnplayer.innerHTML = '2';
-                checkwinner(checkWinCondition());
-                
+                if(checkwinner(checkWinCondition())){
+                    return;
+                }
+                if (aiEnabled) {
+                    setTimeout(aiMove, 500);
+                    turnplayer.innerHTML = '1';
+                }
             } else if (playerturn === 1) {
                 addTile('O', row, col);
                 turnplayer.innerHTML = '1';
-                checkwinner(checkWinCondition());
+                if(checkwinner(checkWinCondition())){
+                    return;
+                }
             }
-            if (aiEnabled) {
-                setTimeout(aiMove, 500);
-                turnplayer.innerHTML = '1';
-                checkwinner(checkWinCondition());
-            }
-            
         } else {
             alert('Already Selected');
         }
@@ -167,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gamesplayed++;
             gamesplayedcounter.innerHTML = gamesplayed;
             playerturn = 0
+            return true;
         } else if (winner === 'O') {
             outcome.innerHTML = 'Player 2 won';
             togglePopup('outcome-popup', true);
@@ -175,24 +178,21 @@ document.addEventListener('DOMContentLoaded', function() {
             gamesplayed++;
             gamesplayedcounter.innerHTML = gamesplayed;
             playerturn = 1
+            return true;
         } else if (winner === 'd') {
+            playerturn = (playerturn + 1) % 2;
             outcome.innerHTML = 'Game is a draw';
             togglePopup('outcome-popup', true);
             gamesplayed++;
             gamesplayedcounter.innerHTML = gamesplayed;
-        }
-        else if (winner === 'n') {
+            return true;
+        } else if (winner === 'n') {
             playerturn = (playerturn + 1) % 2;
             togglePopup('turn-popup', true);
             setTimeout(function () {
                 togglePopup('turn-popup', false);
             }, 500);
-        }else {
-            playerturn = (playerturn + 1) % 2;
-            togglePopup('turn-popup', true);
-            setTimeout(function () {
-                togglePopup('turn-popup', false);
-            }, 500);
+            return false;
         }
     }
     
@@ -274,6 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 makeOptimalMove();
                 break;
         }
+        checkwinner(checkWinCondition());
     }
 
     // Make a random move for Easy AI
